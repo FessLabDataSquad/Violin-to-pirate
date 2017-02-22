@@ -1,0 +1,68 @@
+#### BEGIN DEVIL SQUAD SCRIPT
+
+# these load R objects -- as written this assumes the source files are in same folder as this script
+load("mturk1_DS.Rdata")
+load("mturk2_DS.Rdata")
+load("mturk3_DS.Rdata")
+load("mturk4_DS.Rdata")
+load("field1_DS.Rdata")
+
+library(ggplot2) # This is a very powerful package for creating data visualizations. There are entire books written about this package.
+
+# Here I create a custom function, largely based on gglot(). 
+
+violin = function (X, Y) ggplot (X, aes(factor(prosocial_condition), Y)) + geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), aes(fill=condition)) + scale_fill_manual(values = c("olivedrab", "darkorange")) + xlab("Elevation is 1/Orange")  + theme(legend.position="none")
+
+# Here I'm repeating the functiond defined in line 14, but spreading it out so I can add comments explaining it.
+# You don't need to run both, but it just overwrites it with the same thing, so no big deal.
+
+violin = function (X, Y) #we're creating a new function based on X and Y
+  ggplot (X, aes(factor(prosocial_condition), Y)) +   # ggplot looks at dataframe X and plots variable Y split by prosocial_condition &...
+  geom_violin(draw_quantiles = c(0.25, 0.5, 0.75), aes(fill = condition)) +  # use the violin type plot, draw lines at the quartiles, color based on condition &...
+  scale_fill_manual(values = c("olivedrab", "darkorange")) + # use these colors
+  xlab("Elevation is 1/Orange")  + #label the X axis
+  theme(legend.position = "none") # don't include a legend
+
+# Your assignment is to improve this violin function to a pirate plot function, e.g.   https://www.r-bloggers.com/the-pirate-plot-2-0-the-rdi-plotting-choice-of-r-pirates/     or   https://sakaluk.wordpress.com/2017/02/03/15-make-it-pretty-diy-pirate-plots-in-ggplot2/
+
+# Define your new function here:
+
+pirate = function (...)
+
+
+
+# Below is the long list of cases to be visualized this way. Check that your pirate function looks like it does the same thing, only better, than violin.
+
+violin (mturk1, mturk1$elevating_emotions)
+violin (mturk2, mturk2$elevating_emotions)
+violin (mturk3, mturk3$elevating_emotions_post)
+violin (mturk3, mturk3$elevating_emotions_difference)
+violin (mturk4, mturk4$elevating_emotions_post)
+violin (mturk4, mturk4$elevating_emotions_difference)
+violin (field1, field1$elevating_emotions)
+
+violin (mturk1, mturk1$prosocial_motives)
+violin (mturk2, mturk2$prosocial_motives)
+violin (mturk3, mturk3$prosocial_motives_post)
+violin (mturk3, mturk3$prosocial_motives_difference)
+violin (mturk4, mturk4$prosocial_motives_post)
+violin (mturk4, mturk4$prosocial_motives_difference)
+violin (field1, field1$prosocial_motives)
+
+violin (mturk1, mturk1$somatic)
+violin (mturk2, mturk2$somatic)
+violin (mturk4, mturk4$somatic_post)
+violin (mturk4, mturk4$somatic_difference)
+violin (field1, field1$somatic)
+
+violin (mturk1, mturk1$positive_affect)
+violin (mturk2, mturk2$positive_affect)
+
+violin (mturk1, mturk1$view_humanity)
+violin (mturk2, mturk2$view_humanity)
+violin (mturk3, mturk3$attitude_post)
+violin (mturk3, mturk3$attitude_difference)
+violin (mturk4, mturk4$attitude_post)
+violin (mturk4, mturk4$attitude_difference)
+
+
