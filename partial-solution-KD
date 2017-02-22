@@ -1,0 +1,28 @@
+# plug this function in and it produces pirate plots
+
+
+pirate = function(K, D)
+  pirateplot(formula = K ~ prosocial_condition,
+             data = D,
+             xlab = "Condition",
+             ylab = "Dependent Variable", 
+             main = "")
+pirate (mturk1$elevating_emotions, mturk1)
+
+
+
+# challenges remaining:
+
+# (1) change the aesthetic attributes of the figure to match requirements:
+#    a) formatting required by journal (e.g. black & white figures, fonts)
+#    b) good solution for auto-labeling the axis
+#              possible solution:
+#                 ylab = name(K)   # and maybe add some text manipulation such that
+#                                 text.manipulation (elevating_emotions) = Elevating Emotions
+#
+# (2) since the format for K and D are like
+#    K = data$DV
+#    D = data
+# is there a way to just enter a single value K and derive D as a function of K?
+#
+# (3) generate a list of all Ks (or Ks and Ds) to feed to the custom function, probably with some *apply() function
